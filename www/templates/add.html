@@ -1,7 +1,9 @@
-<ion-view title="Add Item">
-    <ion-content padding="false" overflow-scroll="true" ng-controller="addCtrl">
+<ion-view hide-nav-bar="true">
+  <ion-header-bar class="bar bar-header bar-positive">
+    <h1 class="title">Add New Contract</h1>
+  </ion-header-bar>
+  <ion-content class="has-header padding full-height">
 
-        <form class="list">
             <ion-input class="item item-input">
                 <i class="icon ion-android-globe"></i>
                 <ion-label>&nbsp Company:</ion-label>
@@ -38,11 +40,12 @@
                 <input type="text" style="text-align: right" ng-model="cont.ref">
             </ion-input>
 
-            <ion-input class="item item-input">
-                <i class="icon ion-ios-telephone"></i>
-                <ion-label> Contact Number:</ion-label>
-                <input type="text" style="text-align: right" ng-model="cont.contact_number">
-            </ion-input>
+                <label class="item item-input">
+                  <i class="icon ion-ios-telephone"></i>
+        <span class="input-label">&nbsp Number:</span>
+        <input type="text" style="text-align: right" ng-model="cont.contact_number">
+      </label>
+
 
             <ion-input class="item item-input">
                 <i class="icon ion-email"></i>
@@ -77,14 +80,7 @@
             </label>
 
 
-        </form>
-
-         <ion-scroll direction="x" style="height:200px; min-height: 200px; overflow: scroll; white-space: nowrap;">
-            <img ng-repeat="image in images" ng-src="{{urlForImage(image)}}" style="height:50px; width: 50px; />
-        </ion-scroll>
-
-        <button class="button button-block icon ion-camera button-balanced" ng-click="addMedia()">&nbsp Add Image</button>
-        <div class="button-bar"> 
+        <div class="button-bar">
             <a href="#/timeline" class="button icon ion-close-circled button-assertive">&nbspCancel</a>
             <a class="button icon ion-ios-checkmark button-positive" ng-click="save()">&nbspAdd</a>
         </div>
@@ -92,6 +88,6 @@
 </ion-view>
 
 <!--
-  
+
 
 -->

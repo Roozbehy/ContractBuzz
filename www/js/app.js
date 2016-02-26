@@ -122,7 +122,8 @@ app.controller('openCtrl', function ($scope, $state, $cordovaDatePicker, $cordov
 
 app.controller('addCtrl', function ($scope, $state, $cordovaDevice, $cordovaFile, $ionicPlatform, $ionicActionSheet,  $cordovaDatePicker, $cordovaLocalNotification, $ionicPopup, ImageService, FileService, ContStore) {
    // add to args : ImageService, FileService,
-   
+
+
     $scope.cont = {
         id: new Date().getTime().toString(),
         ExpDate: '',
@@ -179,7 +180,7 @@ app.controller('addCtrl', function ($scope, $state, $cordovaDevice, $cordovaFile
             id: contID,
             title: 'Contract Reminder',
             description: $scope.cont.company,
-            at: $scope.cont.RemDate,
+            at: alarmTime,
         }).then(function (success) {
             console.log(success);
         }, function (error) {
@@ -219,17 +220,17 @@ app.controller('addCtrl', function ($scope, $state, $cordovaDevice, $cordovaFile
             }
         });
     };
-    
+
       $ionicPlatform.ready(function() {
     $scope.images = FileService.images();
     $scope.$apply();
   });
- 
+
   $scope.urlForImage = function(imageName) {
     var trueOrigin = cordova.file.dataDirectory + imageName;
     return trueOrigin;
   }
- 
+
   $scope.addMedia = function() {
     $scope.hideSheet = $ionicActionSheet.show({
       buttons: [
@@ -243,23 +244,26 @@ app.controller('addCtrl', function ($scope, $state, $cordovaDevice, $cordovaFile
       }
     });
   }
- 
+
   $scope.addImage = function(type) {
     $scope.hideSheet();
     ImageService.handleMediaDialog(type).then(function() {
       $scope.$apply();
     });
   }
-  
-  
+
+
 
     $scope.save = function () {
         $scope.contcopy = angular.copy($scope.cont);
+        console.log("created a copy");
         ContStore.create($scope.contcopy);
-        ContStore.addPerson($scope.cont.person);
+        console.log("added the contract");
         var contIDInt = parseInt($scope.contcopy.id);
         $scope.setNotif(contIDInt);
+        console.log("set the notif");
         ContStore.sort();
+        console.log("sort done");
         $scope.cont = {
             id: new Date().getTime().toString(),
             ExpDate: '',
@@ -275,13 +279,14 @@ app.controller('addCtrl', function ($scope, $state, $cordovaDevice, $cordovaFile
             email: '',
             notes: ''
         };
+        console.log("cont cleared");
         $state.go('tabsController.timeline');
+        console.log("changed state");
     };
 
 })
 
 app.controller('peopleCtrl', function ($scope, $ionicPopup, ContStore) {
-    //$scope.people = ["Ben", "Roozbeh", "Ali", "Gholi"];
     $scope.people = ContStore.getPeople();
     $scope.conts = ContStore.list();
     $scope.shouldShowDelete = false;
@@ -406,10 +411,10 @@ app.run(function ($ionicPlatform) {
         //  cordova.plugins.Keyboard.disableScroll(true);
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
         // for form inputs)
-       
+
         if (window.cordova && window.cordova.plugins.Keyboard) {
             cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-            //  cordova.plugins.Keyboard.disableScroll(true);
+              cordova.plugins.Keyboard.disableScroll(true);
         }
         if (window.StatusBar) {
             // org.apache.cordova.statusbar required
@@ -418,4 +423,3 @@ app.run(function ($ionicPlatform) {
         }
     });
 })
-

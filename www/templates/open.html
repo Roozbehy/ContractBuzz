@@ -1,12 +1,20 @@
-<ion-view>
-    <ion-content overflow-scroll="true" padding="false" class="has-header" ng-controller="openCtrl">
+<ion-view hide-nav-bar="true">
+  <ion-header-bar class="bar bar-header bar-positive">
+    <h1 class="title">Add New Contract</h1>
+  </ion-header-bar>
+  <ion-content class="has-header padding full-height">
 
-        <form class="list">
             <ion-input class="item item-input">
                 <i class="icon ion-android-globe"></i>
                 <ion-label>&nbsp Company:</ion-label>
-                <input type="text" style="text-align: right" ng-model="cont.company" required>
+                <input type="text" style="text-align: right" ng-model="cont.company">
             </ion-input>
+
+            <!--<ion-input class="item item-input">
+                <i class="icon ion-ios-calendar-outline"></i>
+                <ion-label ng-click="showDatePicker('date')">&nbsp Expiry Date:</ion-label>
+                <input type="text" style="text-align: right" placeholder="DD/MM/YYYY" ng-readonly="true" ng-model="cont.date">
+            </ion-input>-->
 
             <label class="item item-input widget uib_w_9 d-margins" data-uib="ionic/input" data-ver="0" ng-click="showDatePicker('expiry')">
                 <i class="icon ion-ios-calendar-outline"></i>
@@ -14,11 +22,17 @@
                 <input type="text" style="text-align: right" placeholder="dd/mm/yyyy" ng-model="cont.stringExp" ng-readonly="true">
             </label>
 
-            <label class="item item-input" ng-click="showDatePicker('remind')">
+            <label class="item item-input widget uib_w_9 d-margins" data-uib="ionic/input" data-ver="0" ng-click="showDatePicker('remind')">
                 <i class="icon ion-android-notifications"></i>
-                <span class="input-label">&nbsp Remind Me On:</span>
+                <span class="input-label">&nbsp Remind On:</span>
                 <input type="text" style="text-align: right" placeholder="dd/mm/yyyy" ng-model="cont.stringRem" ng-readonly="true">
             </label>
+
+            <!--  <ion-input class="item item-input">
+                <i class="icon ion-android-notifications"></i>
+                <ion-label ng-click="showDatePicker('date')">&nbsp Remind Me On:</ion-label>
+                <input type="text" style="text-align: right" ng-model="cont.remind" ng-readonly="true">
+            </ion-input> -->
 
             <ion-input class="item item-input">
                 <i class="icon ion-compose"></i>
@@ -26,19 +40,20 @@
                 <input type="text" style="text-align: right" ng-model="cont.ref">
             </ion-input>
 
-            <ion-input class="item item-input">
-                <i class="icon ion-ios-telephone"></i>
-                <ion-label>&nbsp Contact Number:</ion-label>
-                <input type="tel" style="text-align: right" ng-model="cont.contact_number">
-            </ion-input>
+                <label class="item item-input">
+                  <i class="icon ion-ios-telephone"></i>
+        <span class="input-label">&nbsp Number:</span>
+        <input type="text" style="text-align: right" ng-model="cont.contact_number">
+      </label>
+
 
             <ion-input class="item item-input">
                 <i class="icon ion-email"></i>
                 <ion-label>&nbsp Email:</ion-label>
-                <input type="email" style="text-align: right" ng-model="cont.email">
+                <input type="text" style="text-align: right" ng-model="cont.email">
             </ion-input>
 
-            </label>
+
 
             <label class="item item-input item-select">
                 <i class="icon ion-person"></i>
@@ -65,19 +80,14 @@
             </label>
 
 
-        </form>
-
-        <!-- <ion-scroll direction="x" style="height:200px; min-height: 200px; overflow: scroll; white-space: nowrap;">
-            <img ng-repeat="image in images" ng-src="{{urlForImage(image)}}" style="height:200px; padding: 5px 5px 5px 5px;" />
-        </ion-scroll> -->
         <div class="button-bar">
             <a href="#/timeline" class="button icon ion-close-circled button-assertive">&nbspCancel</a>
-            <a class="button icon ion-ios-checkmark button-positive" ng-click="save()">&nbspSave</a>
+            <a class="button icon ion-ios-checkmark button-positive" ng-click="save()">&nbspAdd</a>
         </div>
     </ion-content>
 </ion-view>
 
 <!--
-  
+
 
 -->

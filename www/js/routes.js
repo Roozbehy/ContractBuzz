@@ -7,15 +7,15 @@ angular.module('app.routes', [])
   // Set up the various states which the app can be in.
   // Each state's controller can be found in controllers.js
   $stateProvider
-    
-      
+
+
     .state('tabsController', {
       url: '',
       abstract:true,
       templateUrl: 'templates/tabsController.html'
     })
-      
-        
+
+
     .state('tabsController.timeline', {
       url: '/timeline',
       views: {
@@ -25,8 +25,8 @@ angular.module('app.routes', [])
         }
       }
     })
-            
-          
+
+
     .state('tabsController.open', {
       url: '/open/:contID',
       views: {
@@ -36,11 +36,11 @@ angular.module('app.routes', [])
         }
       }
     })
-        
-      
-    
-      
-        
+
+
+
+
+
     .state('tabsController.people', {
       url: '/people',
       views: {
@@ -50,12 +50,9 @@ angular.module('app.routes', [])
         }
       }
     })
-        
-      
-    
-      
-        
-    .state('tabsController.addItem', {
+
+
+    .state('tabsController.add', {
       url: '/add',
       views: {
         'tab2': {
@@ -64,11 +61,9 @@ angular.module('app.routes', [])
         }
       }
     })
-        
-      
-    
-      
-        
+
+
+
     .state('tabsController.settings', {
       url: '/settings',
       views: {
@@ -78,8 +73,8 @@ angular.module('app.routes', [])
         }
       }
     })
-        
-      
+
+
     ;
 
   // if none of the above states are matched, use this as the fallback
