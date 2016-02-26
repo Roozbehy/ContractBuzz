@@ -130,6 +130,7 @@ app.controller('addCtrl', function ($scope, $state, $cordovaDevice, $cordovaFile
         RemDate: '',
         stringExp: '',
         stringRem: '',
+        stringTime: '',
         remind: '',
         type: '',
         company: '',
@@ -171,22 +172,40 @@ app.controller('addCtrl', function ($scope, $state, $cordovaDevice, $cordovaFile
                 console.log(error);
             })
         }
+                if (field == 'time') {
+
+                    $cordovaDatePicker.show({
+                        date: new Date(),
+                        mode: 'time',
+                    }).then(function (success) {
+                        $scope.cont.RemDate.setHours(success.getHours());
+                        $scope.cont.RemDate.setMinutes(success.getMinutes());
+                        $scope.cont.RemDate.setSeconds(success.getSeconds());
+                        var hours = $scope.cont.RemDate.getHours();
+                        var minutes = $scope.cont.RemDate.getMinutes();
+                        var ampm = (hours < 12) ? 'AM' : 'PM';
+                        hours-=12;
+                        $scope.cont.stringTime = hours + ':' + minutes + ' ' + ampm;
+                      }, function (error) {
+                        console.log(error);
+                    })
+                }
     };
 
     $scope.setNotif = function (contID) {
+      if ($scope.cont.RemDate!=undefined){
         var alarmTime = $scope.cont.RemDate;
-        alarmTime.setMinutes(alarmTime.getMinutes() + 1);
         $cordovaLocalNotification.schedule({
             id: contID,
-            title: 'Contract Reminder',
-            description: $scope.cont.company,
+            title: $scope.cont.company ? $scope.cont.company : 'no company',
             at: alarmTime,
         }).then(function (success) {
             console.log(success);
         }, function (error) {
             console.log(error);
         })
-    };
+    }
+  };
 
     $scope.showPopup = function () {
         $scope.person = {};
@@ -270,6 +289,7 @@ app.controller('addCtrl', function ($scope, $state, $cordovaDevice, $cordovaFile
             RemDate: '',
             stringExp: '',
             stringRem: '',
+            stringTime: '',
             remind: '',
             type: '',
             company: '',

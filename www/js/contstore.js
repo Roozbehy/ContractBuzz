@@ -5,6 +5,9 @@ angular.module('app.contstore', [])
 
         var conts = angular.fromJson(window.localStorage['conts'] || '[]');
         var people = angular.fromJson(window.localStorage['people'] || '[]');
+        if (!people[0]){
+          people.push('Roozi');
+        };
 
         function persist() {
             window.localStorage['conts'] = angular.toJson(conts);
@@ -73,11 +76,11 @@ angular.module('app.contstore', [])
             getPeople: function () {
                 return people;
             },
-            
+
             numPeople: function () {
                 return people.length;
             },
-            
+
             getPersonConts: function(person){
                 var personConts = [];
                 for (var i = 0; i < conts.length; i++) {
@@ -94,7 +97,7 @@ angular.module('app.contstore', [])
                     persist();
                 }
             },
-            
+
             removePerson: function (person) {
                 for (var i = 0; i < conts.length; i++) {
                     console.log(i + " " + conts[i]);
@@ -102,7 +105,7 @@ angular.module('app.contstore', [])
                         conts.splice(i,1);
                     }
                 }
-                
+
                 for (var i = 0; i < people.length; i++) {
                     if (people[i] === person) {
                         people.splice(i, 1);
