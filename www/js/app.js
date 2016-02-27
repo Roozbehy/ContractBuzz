@@ -15,7 +15,7 @@ app.controller("ExampleController", function ($scope, $cordovaLocalNotification)
 
 });
 
-app.controller('ListCtrl', function ($scope, $cordovaLocalNotification, ContStore) {
+app.controller('ListCtrl', function ($scope, $cordovaLocalNotification, ContStore, $cordovaCalendar) {
 
     $scope.conts = ContStore.list();
 
@@ -51,15 +51,31 @@ app.controller('ListCtrl', function ($scope, $cordovaLocalNotification, ContStor
         });
     };
 
+    $scope.deleteCalEvent = function(contID){
+        var companyName = ContStore.get(contID).company;
+        var newTitle = 'Reminder for ' + companyName;
+        var RemDate = ContStore.get(contID).RemDate;
+        $cordovaCalendar.deleteEvent({
+        newTitle: newTitle,
+        startDate: RemDate,
+        endDate: RemDate
+      }).then(function (result) {
+        console.log(result);
+      }, function (err) {
+        console.log(err);
+      });
+    };
+
     $scope.remove = function (contID) {
         var contIDInt = parseInt(contID);
         $scope.cancelNotif(contIDInt);
+        $scope.deleteCalEvent(contID);
         ContStore.remove(contID);
     };
 
 })
 
-app.controller('openCtrl', function ($scope, $state, $cordovaDatePicker, $cordovaLocalNotification, ContStore) {
+app.controller('openCtrl', function ($scope, $state, $cordovaDatePicker, $cordovaLocalNotification, ContStore, $cordovaCalendar) {
     $scope.conts = ContStore.list();
     $scope.people = ContStore.getPeople();
     $scope.cont = angular.copy(ContStore.get($state.params.contID));
@@ -108,9 +124,29 @@ app.controller('openCtrl', function ($scope, $state, $cordovaDatePicker, $cordov
         })
     };
 
+    $scope.modifyCalendarEvent = function() {
+    var currentTitle = 'Reminder for ' + ContStore.get($state.params.contID).company;
+    var currentRemDate = ContStore.get($state.params.contID).RemDate;
+    var newTitle = 'Reminder for ' + $scope.cont.company;
+
+    $cordovaCalendar.modifyEvent({
+    title: currentTitle,
+    startDate: currentRemDate,
+    endDate: currentRemDate,
+    newTitle: newTitle,
+    newStartDate: $scope.cont.RemDate,
+    newEndDate: $scope.cont.RemDate
+  }).then(function (result) {
+    console.log(result);
+  }, function (err) {
+    console.log(err);
+  });
+};
+
     $scope.save = function () {
+        $scope.modifyCalendarEvent();
         ContStore.update($scope.cont);
-        ContStore.addPerson($scope.cont.person);
+      //  ContStore.addPerson($scope.cont.person);
         var contIDint = parseInt($scope.cont.id);
         console.log(contIDint);
         $scope.updateNotif(contIDint);
@@ -120,7 +156,7 @@ app.controller('openCtrl', function ($scope, $state, $cordovaDatePicker, $cordov
 
 })
 
-app.controller('addCtrl', function ($scope, $state, $cordovaDevice, $cordovaFile, $ionicPlatform, $ionicActionSheet,  $cordovaDatePicker, $cordovaLocalNotification, $ionicPopup, ImageService, FileService, ContStore) {
+app.controller('addCtrl', function ($scope, $state, $cordovaDevice, $cordovaFile, $ionicPlatform, $ionicActionSheet,  $cordovaDatePicker, $cordovaLocalNotification, $ionicPopup, ImageService, FileService, ContStore, $cordovaCalendar) {
    // add to args : ImageService, FileService,
 
 
@@ -184,7 +220,9 @@ app.controller('addCtrl', function ($scope, $state, $cordovaDevice, $cordovaFile
                         var hours = $scope.cont.RemDate.getHours();
                         var minutes = $scope.cont.RemDate.getMinutes();
                         var ampm = (hours < 12) ? 'AM' : 'PM';
-                        hours-=12;
+                        if (hours>12) {
+                          hours-=12;
+                        };
                         $scope.cont.stringTime = hours + ':' + minutes + ' ' + ampm;
                       }, function (error) {
                         console.log(error);
@@ -206,6 +244,20 @@ app.controller('addCtrl', function ($scope, $state, $cordovaDevice, $cordovaFile
         })
     }
   };
+
+  $scope.createCalendarEvent = function() {
+      var eventTitle = 'Reminder for ' + $scope.cont.company;
+        $cordovaCalendar.createEvent({
+            title: eventTitle,
+            notes: 'Open ContractBuzz for details',
+            startDate: $scope.cont.RemDate,
+            endDate: $scope.cont.RemDate
+        }).then(function (result) {
+            console.log("Event created successfully");
+        }, function (err) {
+            console.error("There was an error: " + err);
+        });
+    };
 
     $scope.showPopup = function () {
         $scope.person = {};
@@ -281,6 +333,7 @@ app.controller('addCtrl', function ($scope, $state, $cordovaDevice, $cordovaFile
         var contIDInt = parseInt($scope.contcopy.id);
         $scope.setNotif(contIDInt);
         console.log("set the notif");
+        $scope.createCalendarEvent();
         ContStore.sort();
         console.log("sort done");
         $scope.cont = {

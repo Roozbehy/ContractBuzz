@@ -8,8 +8,8 @@
                 <img src="img/{{cont.type}}.png">
                 <br><span>{{cont.type}} ({{cont.company}})</span>
                 <p>Expires
-                    <span ng-show="{{daysLeft(cont.ExpDate)}}==0">Today</span>
-                    <span ng-show="{{daysLeft(cont.ExpDate)}}==1">in 1 day</span>
+                    <span ng-show="{{daysLeft(cont.ExpDate)}}===0">Today</span>
+                    <span ng-show="{{daysLeft(cont.ExpDate)}}===1">in 1 day</span>
                     <span ng-show="{{daysLeft(cont.ExpDate)}}>1"> in <td>{{daysLeft(cont.ExpDate)}}</td> days</span> - {{cont.stringExp}}</p>
             <ion-option-button class="button-assertive icon ion-trash-b" ng-click="remove(cont.id)">&nbspDelete</ion-option-button>
             </ion-item>
@@ -61,11 +61,11 @@
                 <h2>{{cont.type}} ({{cont.company}})</h2>
                 <p>Expires in 16 days</p>
             </ion-item>
-            
+
             <ion-item ng-repeat="item in cont" ng-show="isContShown(cont)">
                     {{item}}
                 </ion-item>
-            
+
             <ion-item class="item-divider">Expired</ion-item>
             <ion-item class="item-thumbnail-left" href="#/page9">
                 <img src="img/gym.png">

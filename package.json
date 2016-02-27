@@ -24,7 +24,11 @@
     "cordova-plugin-localNotification",
     "ionic-plugin-keyboard",
     "cordova-plugin-camera",
-    "cordova-plugin-file"
+    "cordova-plugin-file",
+    {
+      "locator": "https://github.com/EddyVerbruggen/Calendar-PhoneGap-Plugin.git",
+      "id": "cordova-plugin-calendar"
+    }
   ],
   "cordovaPlatforms": [
     "android"
