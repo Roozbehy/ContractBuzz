@@ -4,6 +4,7 @@ angular.module('app.contstore', [])
 
 
         var conts = angular.fromJson(window.localStorage['conts'] || '[]');
+        var deletedConts = angular.fromJson(window.localStorage['deletedConts'] || '[]');
         var people = angular.fromJson(window.localStorage['people'] || '[]');
         if (!people[0]){
           people.push('Roozi');
@@ -12,6 +13,7 @@ angular.module('app.contstore', [])
         function persist() {
             window.localStorage['conts'] = angular.toJson(conts);
             window.localStorage['people'] = angular.toJson(people);
+            window.localStorage['deletedConts'] = angular.toJson(deletedConts);
         };
 
         function existsPerson(name) {
@@ -66,11 +68,20 @@ angular.module('app.contstore', [])
             remove: function (contID) {
                 for (var i = 0; i < conts.length; i++) {
                     if (conts[i].id === contID) {
+                      deletedConts.push(conts[i]);
                         conts.splice(i, 1);
                         persist();
                         return;
                     }
                 }
+            },
+
+            restoreDeletedConts: function(){
+              for (var i = 0; i < deletedConts.length; i++) {
+                conts.push(deletedConts[i]);
+              }
+              deletedConts = [];
+              persist();
             },
 
             getPeople: function () {
@@ -99,11 +110,13 @@ angular.module('app.contstore', [])
             },
 
             removePerson: function (person) {
-                for (var i = 0; i < conts.length; i++) {
-                    console.log(i + " " + conts[i]);
-                    if (conts[i].person === person){
-                        conts.splice(i,1);
+              var iteratenum = conts.length;
+                for (var i = 0; i < iteratenum; i++) {
+                    if (conts[i].person == person){
+                      deletedConts.push(conts[i]);
+                        conts.splice(i, 1);
                     }
+                    persist();
                 }
 
                 for (var i = 0; i < people.length; i++) {

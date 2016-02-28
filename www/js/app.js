@@ -19,6 +19,7 @@ app.controller('ListCtrl', function ($scope, $cordovaLocalNotification, ContStor
 
     $scope.conts = ContStore.list();
 
+
     $scope.toggleCont = function (cont) {
         if ($scope.isContShown(cont)) {
             $scope.shownCont = null;
@@ -45,8 +46,14 @@ app.controller('ListCtrl', function ($scope, $cordovaLocalNotification, ContStor
       return (cont.ExpDate.getTime() < now.getTime());
     };
 
+    $scope.isDeleted = function (cont){
+      return cont.deleted;
+    };
+
     $scope.cancelNotif = function (contID) {
+      if (ContStore.get(contID).RemDate){
         $cordovaLocalNotification.cancel(contID);
+      };
 
     };
 
@@ -57,6 +64,7 @@ app.controller('ListCtrl', function ($scope, $cordovaLocalNotification, ContStor
     };
 
     $scope.deleteCalEvent = function(contID){
+      if (ContStore.get(contID).RemDate){
         var companyName = ContStore.get(contID).company;
         var newTitle = 'Reminder for ' + companyName;
         var RemDate = ContStore.get(contID).RemDate;
@@ -70,11 +78,12 @@ app.controller('ListCtrl', function ($scope, $cordovaLocalNotification, ContStor
         console.log(err);
       });
     };
+    };
 
     $scope.remove = function (contID) {
         var contIDInt = parseInt(contID);
-        $scope.cancelNotif(contIDInt);
-        $scope.deleteCalEvent(contID);
+        //$scope.cancelNotif(contIDInt);
+        //$scope.deleteCalEvent(contID);
         ContStore.remove(contID);
     };
 
@@ -170,12 +179,16 @@ app.controller('openCtrl', function ($scope, $state, $cordovaDatePicker, $cordov
 };
 
     $scope.save = function () {
+      if ($scope.cont.RemDate){
         $scope.modifyCalendarEvent();
+      };
         ContStore.update($scope.cont);
       //  ContStore.addPerson($scope.cont.person);
         var contIDint = parseInt($scope.cont.id);
         console.log(contIDint);
+        if ($scope.cont.RemDate){
         $scope.updateNotif(contIDint);
+      }
         ContStore.sort();
         $state.go('tabsController.timeline');
     };
@@ -200,7 +213,8 @@ app.controller('addCtrl', function ($scope, $state, $cordovaDevice, $cordovaFile
         ref: '',
         contact_number: '',
         email: '',
-        notes: ''
+        notes: '',
+        deleted: false
     };
     $scope.people = ContStore.getPeople();
 
@@ -357,9 +371,9 @@ app.controller('addCtrl', function ($scope, $state, $cordovaDevice, $cordovaFile
         ContStore.create($scope.contcopy);
         console.log("added the contract");
         var contIDInt = parseInt($scope.contcopy.id);
-        $scope.setNotif(contIDInt);
+        if ($scope.contcopy.RemDate){$scope.setNotif(contIDInt);};
         console.log("set the notif");
-        $scope.createCalendarEvent();
+        if ($scope.contcopy.RemDate){$scope.createCalendarEvent();};
         ContStore.sort();
         console.log("sort done");
         $scope.cont = {
@@ -500,7 +514,11 @@ app.controller('addItemCtrl', function ($scope) {
 
 })
 
-app.controller('settingsCtrl', function ($scope) {
+app.controller('settingsCtrl', function ($scope, ContStore) {
+
+  $scope.restoreConts = function(){
+    ContStore.restoreDeletedConts();
+  };
 
 })
 
