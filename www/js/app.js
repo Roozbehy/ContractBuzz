@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-var app = angular.module('app', ['ionic', 'ngCordova', 'app.controllers', 'app.routes', 'app.services', 'app.directives', 'app.contstore']);
+var app = angular.module('app', ['ionic', 'ngCordova', 'app.controllers', 'app.routes', 'app.services', 'app.directives', 'app.contstore', 'angularMoment']);
 angular.module('app.controllers', [])
 
 
@@ -38,6 +38,11 @@ app.controller('ListCtrl', function ($scope, $cordovaLocalNotification, ContStor
             return diffDays;
         }
 
+    };
+
+    $scope.isExpired = function (cont){
+      var now = new Date();
+      return (cont.ExpDate.getTime() < now.getTime());
     };
 
     $scope.cancelNotif = function (contID) {
@@ -106,6 +111,27 @@ app.controller('openCtrl', function ($scope, $state, $cordovaDatePicker, $cordov
                 $scope.cont.RemDate = success;
                 $scope.cont.stringRem = $scope.cont.RemDate.toLocaleDateString();
             }, function (error) {
+                console.log(error);
+            })
+        }
+
+        if (field == 'time') {
+
+            $cordovaDatePicker.show({
+                date: new Date(),
+                mode: 'time',
+            }).then(function (success) {
+                $scope.cont.RemDate.setHours(success.getHours());
+                $scope.cont.RemDate.setMinutes(success.getMinutes());
+                $scope.cont.RemDate.setSeconds(success.getSeconds());
+                var hours = $scope.cont.RemDate.getHours();
+                var minutes = $scope.cont.RemDate.getMinutes();
+                var ampm = (hours < 12) ? 'AM' : 'PM';
+                if (hours>12) {
+                  hours-=12;
+                };
+                $scope.cont.stringTime = hours + ':' + minutes + ' ' + ampm;
+              }, function (error) {
                 console.log(error);
             })
         }

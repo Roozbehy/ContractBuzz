@@ -4,18 +4,18 @@
         <span class="text-center"><ion-item class="item-divider">Upcoming</ion-item></span>
         <ion-list>
         <div ng-repeat="cont in conts">
-            <ion-item class="item-thumbnail-left item-remove-animate"  ng-click="toggleCont(cont)" ng-class="{active: isContShown(cont)}">
+            <ion-item class="item-thumbnail-left item-remove-animate"  ng-click="toggleCont(cont)" ng-class="{active: isContShown(cont)}" ng-show="!isExpired(cont)">
                 <img src="img/{{cont.type}}.png">
                 <br><span>{{cont.type}} ({{cont.company}})</span>
-                <p>Expires
+                <p>Expires in {{cont.ExpDate | amDifference : null : 'days' }} days - {{cont.stringExp}}</p>
+                <!-- <p>Expires
                     <span ng-show="{{daysLeft(cont.ExpDate)}}===0">Today</span>
                     <span ng-show="{{daysLeft(cont.ExpDate)}}===1">in 1 day</span>
-                    <span ng-show="{{daysLeft(cont.ExpDate)}}>1"> in <td>{{daysLeft(cont.ExpDate)}}</td> days</span> - {{cont.stringExp}}</p>
+                    <span ng-show="{{daysLeft(cont.ExpDate)}}>1"> in <td>{{daysLeft(cont.ExpDate)}}</td> days</span> - {{cont.stringExp}}</p> -->
             <ion-option-button class="button-assertive icon ion-trash-b" ng-click="remove(cont.id)">&nbspDelete</ion-option-button>
             </ion-item>
-            </ion-list>
 
-            <ion-list class="item-text-wrap" ng-show="isContShown(cont)">
+            <ion-list class="item-text-wrap" ng-show="isContShown(cont) && !isExpired(cont)">
 
                 <ion-item class="item-icon-left">
                     <i class="icon icon-right ion-person"></i>Assigned To
@@ -48,8 +48,57 @@
 
             </ion-list>
 
-            </ion-item>
         </div>
+      </ion-list>
+      <div class="item item-divider text-center">Expired</div>
+      <div ng-repeat="cont in conts">
+        <ion-item class="item-thumbnail-left item-remove-animate"  ng-click="toggleCont(cont)" ng-class="{active: isContShown(cont)}" ng-show="isExpired(cont)">
+            <img src="img/{{cont.type}}.png">
+            <br><span>{{cont.type}} ({{cont.company}})</span>
+            <p>Expired <span am-time-ago="cont.ExpDate.getTime()"></span>- {{cont.stringExp}}</p>
+            <!-- <p>Expires
+                <span ng-show="{{daysLeft(cont.ExpDate)}}===0">Today</span>
+                <span ng-show="{{daysLeft(cont.ExpDate)}}===1">in 1 day</span>
+                <span ng-show="{{daysLeft(cont.ExpDate)}}>1"> in <td>{{daysLeft(cont.ExpDate)}}</td> days</span> - {{cont.stringExp}}</p> -->
+        <ion-option-button class="button-assertive icon ion-trash-b" ng-click="remove(cont.id)">&nbspDelete</ion-option-button>
+        </ion-item>
+
+        <ion-list class="item-text-wrap" ng-show="isContShown(cont) && isExpired(cont)">
+
+            <ion-item class="item-icon-left">
+                <i class="icon icon-right ion-person"></i>Assigned To
+                <span class="item-note">{{cont.person}}</span>
+            </ion-item>
+
+            <ion-item class="item-icon-left">
+                <i class="icon ion-compose"></i>Reference:
+                <span class="item-note">{{cont.ref}}</span>
+            </ion-item>
+
+            <ion-item class="item-icon-left">
+                <i class="icon ion-ios-telephone"></i>Contact Number:
+                <span class="item-note">{{cont.contact_number}}</span>
+            </ion-item>
+
+            <ion-item class="item-icon-left">
+                <i class="icon ion-email"></i>Email Address:
+                <span class="item-note">{{cont.email}}</span>
+            </ion-item>
+
+            <ion-item class="item-icon-left" ng-show="cont.notes">
+                <i class="icon ion-edit"></i>Notes:
+                <br> {{cont.notes}}
+            </ion-item>
+
+            <span class="text-center">
+        <a href="#/open/{{cont.id}}"><button class="button button-block button-positive">Edit</button></a>
+        </span>
+
+        </ion-list>
+
+        </div>
+      </div>
+
 
         <!-- <button class="button" ng-click="add()">Add notification</button> -->
         <!--
