@@ -88,8 +88,14 @@
 
         <div class="button-bar">
             <a href="#/timeline" class="button icon ion-close-circled button-assertive">&nbspCancel</a>
+            <a class="button icon ion-images button-balanced" ng-click="addMedia()">&nbspAdd Image</a>
             <a class="button icon ion-ios-checkmark button-positive" ng-click="save()">&nbspAdd</a>
         </div>
+
+        <ion-scroll direction="x" style="height:200px; min-height: 200px; overflow: scroll; white-space: nowrap;">
+     <img ng-repeat="image in images" ng-src="{{urlForImage(image)}}" style="width:50%; padding: 5px 5px 5px 5px;"/>
+   </ion-scroll>
+
     </ion-content>
 </ion-view>
 

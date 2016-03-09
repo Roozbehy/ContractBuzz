@@ -9,15 +9,10 @@ var app = angular.module('app', ['ionic', 'ngCordova', 'app.controllers', 'app.r
 angular.module('app.controllers', [])
 
 
-app.controller("ExampleController", function ($scope, $cordovaLocalNotification) {
-
-
-
-});
-
 app.controller('ListCtrl', function ($scope, $cordovaLocalNotification, ContStore, $cordovaCalendar) {
 
     $scope.conts = ContStore.list();
+    $scope.expired = ContStore.listExpired();
 
 
     $scope.toggleCont = function (cont) {
@@ -522,8 +517,10 @@ app.controller('settingsCtrl', function ($scope, ContStore) {
 
 })
 
-app.run(function ($ionicPlatform) {
+app.run(function ($ionicPlatform, ContStore) {
     // cordova.plugins.Keyboard.disableScroll(true);
+
+
     $ionicPlatform.ready(function () {
         //  cordova.plugins.Keyboard.disableScroll(true);
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -539,4 +536,8 @@ app.run(function ($ionicPlatform) {
             //cordova.plugins.Keyboard.disableScroll(true);
         }
     });
+
+    $ionicPlatform.on('resume', function(){
+      ContStore.refreshLists();
+        });
 })

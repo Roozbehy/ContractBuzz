@@ -4,7 +4,7 @@
         <span class="text-center"><ion-item class="item-divider">Upcoming</ion-item></span>
         <ion-list>
         <div ng-repeat="cont in conts">
-            <ion-item class="item-thumbnail-left item-remove-animate"  ng-click="toggleCont(cont)" ng-class="{active: isContShown(cont)}" ng-show="!isExpired(cont)">
+            <ion-item class="item-thumbnail-left item-remove-animate"  ng-click="toggleCont(cont)" ng-class="{active: isContShown(cont)}">
                 <img src="img/{{cont.type}}.png">
                 <br><span>{{cont.type}} ({{cont.company}})</span>
                 <p>Expires in {{cont.ExpDate | amDifference : null : 'days' }} days - {{cont.stringExp}}</p>
@@ -15,7 +15,7 @@
             <ion-option-button class="button-assertive icon ion-trash-b" ng-click="remove(cont.id)">&nbspDelete</ion-option-button>
             </ion-item>
 
-            <ion-list class="item-text-wrap" ng-show="isContShown(cont) && !isExpired(cont)">
+            <ion-list class="item-text-wrap" ng-show="isContShown(cont)">
 
                 <ion-item class="item-icon-left">
                     <i class="icon icon-right ion-person"></i>Assigned To
@@ -52,8 +52,8 @@
       </ion-list>
       <div class="item item-divider text-center">Expired</div>
       <ion-list>
-      <div ng-repeat="cont in conts">
-        <ion-item class="item-thumbnail-left item-remove-animate"  ng-click="toggleCont(cont)" ng-class="{active: isContShown(cont)}" ng-show="isExpired(cont)">
+      <div ng-repeat="cont in expired">
+        <ion-item class="item-thumbnail-left item-remove-animate"  ng-click="toggleCont(cont)" ng-class="{active: isContShown(cont)}">
             <img src="img/{{cont.type}}.png">
             <br><span>{{cont.type}} ({{cont.company}})</span>
             <p>Expired <span am-time-ago="cont.ExpDate"></span> - {{cont.stringExp}}</p>
@@ -64,7 +64,7 @@
         <ion-option-button class="button-assertive icon ion-trash-b" ng-click="remove(cont.id)">&nbspDelete</ion-option-button>
         </ion-item>
 
-        <ion-list class="item-text-wrap" ng-show="isContShown(cont) && isExpired(cont)">
+        <ion-list class="item-text-wrap" ng-show="isContShown(cont)">
 
             <ion-item class="item-icon-left">
                 <i class="icon icon-right ion-person"></i>Assigned To
