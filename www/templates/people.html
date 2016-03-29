@@ -26,7 +26,8 @@
     <ion-content overflow-scroll="true" padding="false" class="has-header" ng-controller="peopleCtrl">
         <ion-list>
             <div ng-repeat="person in people">
-                <ion-item class="item item-remove-animate" ng-click="togglePerson(person)" ng-class="{active: isPersonShown(person)}">
+                <ion-item class="item-remove-animate" ng-click="togglePerson(person)" ng-class="{active: isPersonShown(person)}" letters-of="{{person}}">
+
                     <i>{{person}}</i>
                     <ion-option-button class="button-assertive icon ion-trash-b" ng-click="remove(person)">&nbspDelete</ion-option-button>
                 </ion-item>
@@ -65,11 +66,11 @@
                 <h2>{{cont.type}} ({{cont.company}})</h2>
                 <p>Expires in 16 days</p>
             </ion-item>
-            
+
             <ion-item ng-repeat="item in cont" ng-show="isContShown(cont)">
                     {{item}}
                 </ion-item>
-            
+
             <ion-item class="item-divider">Expired</ion-item>
             <ion-item class="item-thumbnail-left" href="#/page9">
                 <img src="img/gym.png">

@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-var app = angular.module('app', ['ionic', 'ngCordova', 'app.controllers', 'app.routes', 'app.services', 'app.directives', 'app.contstore', 'angularMoment']);
+var app = angular.module('app', ['ionic', 'ngCordova', 'app.controllers', 'app.routes', 'app.services', 'app.directives', 'app.contstore', 'angularMoment','ionicLetterAvatarSelector']);
 angular.module('app.controllers', [])
 
 
@@ -84,10 +84,40 @@ app.controller('ListCtrl', function ($scope, $cordovaLocalNotification, ContStor
 
 })
 
-app.controller('openCtrl', function ($scope, $state, $cordovaDatePicker, $cordovaLocalNotification, ContStore, $cordovaCalendar) {
+app.controller('openCtrl', function ($scope, $state, $cordovaDatePicker, $cordovaLocalNotification, ContStore, $cordovaCalendar, $ionicActionSheet, ImageService, FileService, $cordovaDevice, $cordovaFile) {
     $scope.conts = ContStore.list();
     $scope.people = ContStore.getPeople();
     $scope.cont = angular.copy(ContStore.get($state.params.contID));
+    $scope.images = FileService.images();
+
+  $scope.urlForImage = function(imageName) {
+    var trueOrigin = cordova.file.dataDirectory + imageName;
+    return trueOrigin;
+  };
+
+  $scope.addMedia = function(contID) {
+    $scope.hideSheet = $ionicActionSheet.show({
+      buttons: [
+        { text: 'Take photo' },
+        { text: 'Photo from library' }
+      ],
+      titleText: 'Add images',
+      cancelText: 'Cancel',
+      buttonClicked: function(index) {
+        $scope.addImage(index, contID);
+      }
+    });
+  }
+
+  $scope.addImage = function(type, contID) {
+    $scope.hideSheet();
+    ImageService.handleMediaDialog(type, contID).then(function() {
+      if (!$scope.$$phase)
+      {
+        $scope.$apply();
+      }
+    });
+  }
 
     $scope.showDatePicker = function (field) {
 
@@ -327,17 +357,14 @@ app.controller('addCtrl', function ($scope, $state, $cordovaDevice, $cordovaFile
         });
     };
 
-      $ionicPlatform.ready(function() {
     $scope.images = FileService.images();
-    $scope.$apply();
-  });
 
   $scope.urlForImage = function(imageName) {
     var trueOrigin = cordova.file.dataDirectory + imageName;
     return trueOrigin;
   }
 
-  $scope.addMedia = function() {
+  $scope.addMedia = function(contID) {
     $scope.hideSheet = $ionicActionSheet.show({
       buttons: [
         { text: 'Take photo' },
@@ -346,55 +373,41 @@ app.controller('addCtrl', function ($scope, $state, $cordovaDevice, $cordovaFile
       titleText: 'Add images',
       cancelText: 'Cancel',
       buttonClicked: function(index) {
-        $scope.addImage(index);
+        $scope.addImage(index, contID);
       }
     });
   }
 
-  $scope.addImage = function(type) {
+  $scope.addImage = function(type, contID) {
     $scope.hideSheet();
-    ImageService.handleMediaDialog(type).then(function() {
-      $scope.$apply();
+    ImageService.handleMediaDialog(type, contID).then(function() {
+      if (!$scope.$$phase)
+      {
+        $scope.$apply();
+      }
     });
   }
 
 
 
     $scope.save = function () {
-        $scope.contcopy = angular.copy($scope.cont);
         console.log("created a copy");
-        ContStore.create($scope.contcopy);
+        ContStore.create($scope.cont);
         console.log("added the contract");
-        var contIDInt = parseInt($scope.contcopy.id);
-        if ($scope.contcopy.RemDate){$scope.setNotif(contIDInt);};
+        var contIDInt = parseInt($scope.cont.id);
+        if ($scope.cont.RemDate){$scope.setNotif(contIDInt);};
         console.log("set the notif");
-        if ($scope.contcopy.RemDate){$scope.createCalendarEvent();};
+        if ($scope.cont.RemDate){$scope.createCalendarEvent();};
+        console.log("calendar event created");
         ContStore.sort();
         console.log("sort done");
-        $scope.cont = {
-            id: new Date().getTime().toString(),
-            ExpDate: '',
-            RemDate: '',
-            stringExp: '',
-            stringRem: '',
-            stringTime: '',
-            remind: '',
-            type: '',
-            company: '',
-            person: '',
-            ref: '',
-            contact_number: '',
-            email: '',
-            notes: ''
-        };
-        console.log("cont cleared");
         $state.go('tabsController.timeline');
         console.log("changed state");
     };
 
 })
 
-app.controller('peopleCtrl', function ($scope, $ionicPopup, ContStore) {
+app.controller('peopleCtrl', function ($scope, $ionicPopup, ContStore, $ionicLetterAvatarSelector) {
     $scope.people = ContStore.getPeople();
     $scope.conts = ContStore.list();
     $scope.shouldShowDelete = false;

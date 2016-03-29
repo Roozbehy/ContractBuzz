@@ -28,7 +28,9 @@
     {
       "locator": "https://github.com/EddyVerbruggen/Calendar-PhoneGap-Plugin.git",
       "id": "cordova-plugin-calendar"
-    }
+    },
+    "cordova-plugin-inappbrowser",
+    "org.apache.cordova.vibration"
   ],
   "cordovaPlatforms": [
     "android"

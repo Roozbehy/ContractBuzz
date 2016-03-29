@@ -14,8 +14,8 @@ angular.module('app.services', [])
             return images;
         };
 
-        function addImage(img) {
-            images.push(img);
+        function addImage(img, contID) {
+            images.push({id:contID, photo:img});
             window.localStorage.setItem(IMAGE_STORAGE_KEY, JSON.stringify(images));
         };
 
@@ -57,7 +57,7 @@ angular.module('app.services', [])
             };
         }
 
-        function saveMedia(type) {
+        function saveMedia(type, contID) {
             return $q(function (resolve, reject) {
                 var options = optionsForType(type);
 
@@ -67,7 +67,7 @@ angular.module('app.services', [])
                     var newName = makeid() + name;
                     $cordovaFile.copyFile(namePath, name, cordova.file.dataDirectory, newName)
                         .then(function (info) {
-                            FileService.storeImage(newName);
+                            FileService.storeImage(newName, contID);
                             resolve();
                         }, function (e) {
                             reject();

@@ -53,6 +53,7 @@ angular.module('app.routes', [])
 
 
     .state('tabsController.add', {
+      cache: false,
       url: '/add',
       views: {
         'tab2': {
