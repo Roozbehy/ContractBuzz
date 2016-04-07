@@ -93,9 +93,7 @@
         </div>
 
         <ion-scroll direction="x" style="height:200px; min-height: 200px; overflow: scroll; white-space: nowrap;">
-     <div ng-repeat="image in images" ng-if="image.id==cont.id" style="width:50%; padding: 5px 5px 5px 5px;">
-       <img ng-src="{{urlForImage(image.photo)}}" style="width:100%; padding: 5px 5px 5px 5px;">
-   </div>
+     <img ng-repeat="image in images" ng-if="image.id==cont.id" style="width:50%; padding: 5px 5px 5px 5px;" ng-src="{{urlForImage(image.photo)}}">
  </ion-scroll>
 
     </ion-content>
