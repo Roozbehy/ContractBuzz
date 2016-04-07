@@ -1,0 +1,42 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "cordova-plugin-app-event": {
+            "PACKAGE_NAME": "com.ionicframework.conrem979285"
+        },
+        "cordova-plugin-camera": {
+            "PACKAGE_NAME": "com.ionicframework.conrem979285"
+        },
+        "cordova-plugin-datepicker": {
+            "PACKAGE_NAME": "com.ionicframework.conrem979285"
+        },
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "com.ionicframework.conrem979285"
+        },
+        "de.appplant.cordova.plugin.local-notification": {
+            "PACKAGE_NAME": "com.ionicframework.conrem979285"
+        },
+        "ionic-plugin-keyboard": {
+            "PACKAGE_NAME": "com.ionicframework.conrem979285"
+        },
+        "cordova-plugin-file": {
+            "PACKAGE_NAME": "com.ionicframework.conrem979285"
+        },
+        "cordova-plugin-calendar": {
+            "PACKAGE_NAME": "com.ionicframework.conrem979285"
+        },
+        "cordova-plugin-inappbrowser": {
+            "PACKAGE_NAME": "com.ionicframework.conrem979285"
+        },
+        "cordova-plugin-vibration": {
+            "PACKAGE_NAME": "com.ionicframework.conrem979285"
+        }
+    },
+    "dependent_plugins": {}
+}
