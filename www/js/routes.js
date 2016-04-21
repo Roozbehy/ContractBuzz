@@ -31,7 +31,7 @@ angular.module('app.routes', [])
       url: '/open/:contID',
       views: {
         'tab1': {
-          templateUrl: 'templates/open.html',
+          templateUrl: 'templates/add.html',
           controller: 'openCtrl'
         }
       }
