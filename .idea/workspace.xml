@@ -2,29 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f84e0bc8-fde2-4b8b-ad47-f09a2c301699" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/android.json" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/beep.wav" afterPath="$PROJECT_DIR$/www/beep.wav" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/notif.mp3" afterPath="$PROJECT_DIR$/www/notif.mp3" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config.xml" afterPath="$PROJECT_DIR$/config.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plugins/ios.json" afterPath="$PROJECT_DIR$/plugins/ios.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scss/ionic.app.scss" afterPath="$PROJECT_DIR$/scss/ionic.app.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/css/flex.css" afterPath="$PROJECT_DIR$/www/css/flex.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/css/ionic-letter-avatar-selector.min.css" afterPath="$PROJECT_DIR$/www/css/ionic-letter-avatar-selector.min.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/css/ionic.app.css" afterPath="$PROJECT_DIR$/www/css/ionic.app.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/css/ionic.app.min.css" afterPath="$PROJECT_DIR$/www/css/ionic.app.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/css/style.css" afterPath="$PROJECT_DIR$/www/css/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/index.html" afterPath="$PROJECT_DIR$/www/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/angular-moment.js" afterPath="$PROJECT_DIR$/www/js/angular-moment.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/app.js" afterPath="$PROJECT_DIR$/www/js/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/contstore.js" afterPath="$PROJECT_DIR$/www/js/contstore.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/moment.js" afterPath="$PROJECT_DIR$/www/js/moment.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/routes.js" afterPath="$PROJECT_DIR$/www/js/routes.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/add.html" afterPath="$PROJECT_DIR$/www/templates/add.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/open.html" afterPath="$PROJECT_DIR$/www/templates/open.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/people.html" afterPath="$PROJECT_DIR$/www/templates/people.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/settings.html" afterPath="$PROJECT_DIR$/www/templates/settings.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/tabsController.html" afterPath="$PROJECT_DIR$/www/templates/tabsController.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/timeline.html" afterPath="$PROJECT_DIR$/www/templates/timeline.html" />
     </list>
     <ignored path="ConRem backup.iws" />
@@ -45,14 +27,14 @@
     <favorites_list name="ConRem backup" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.47229326">
+    <splitter split-orientation="horizontal" split-proportion="0.5507246">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="timeline.html" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/www/templates/timeline.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="255">
-                  <caret line="26" column="25" selection-start-line="26" selection-start-column="25" selection-end-line="26" selection-end-column="25" />
+                <state relative-caret-position="225">
+                  <caret line="15" column="17" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="17" />
                   <folding />
                 </state>
               </provider>
@@ -71,8 +53,8 @@
           <file leaf-file-name="people.html" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/www/templates/people.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="240">
-                  <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+                <state relative-caret-position="225">
+                  <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -312,12 +294,12 @@
       <workItem from="1460380537625" duration="11897000" />
       <workItem from="1460714924404" duration="8997000" />
       <workItem from="1460986086616" duration="22484000" />
-      <workItem from="1461145313355" duration="23111000" />
+      <workItem from="1461145313355" duration="26486000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="66489000" />
+    <option name="totallyTimeSpent" value="69864000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -576,14 +558,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/templates/open.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-225">
-          <caret line="9" column="27" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/www/js/contstore.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1152">
@@ -636,18 +610,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/www/templates/open.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-225">
+          <caret line="9" column="27" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/www/templates/timeline.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="26" column="25" selection-start-line="26" selection-start-column="25" selection-end-line="26" selection-end-column="25" />
+        <state relative-caret-position="225">
+          <caret line="15" column="17" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="17" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/templates/people.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+        <state relative-caret-position="225">
+          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
           <folding />
         </state>
       </provider>

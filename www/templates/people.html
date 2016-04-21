@@ -4,23 +4,17 @@
     </ion-header-bar>
     <ion-content class="has-header padding full-height">
         <div class="peoples-add">
-            <div class="list">
-                <a class="item item-avatar" href="#" ng-repeat="person in people">
+            <ion-list class="list">
+                <a class="item" ng-repeat="person in people">
               <span>
               	<i class="alfa">
                 	<h3>{{getInitials(person)}}</h3>
                  </i>
                </span>
-
-                    <h2>{{person}}</h2>
-                    <div class="arrow-left"><img src="img/down-arrow.png"></div>
+                        <h2>{{person}}</h2>
+                        <div class="arrow-left"><img src="img/down-arrow.png"></div>
                 </a>
-                <div class="col">
-                    <div class="add-people-icon">
-                        <a ng-click="showPopup()" class="add-ico"><img src="img/add-icon-people.png"></a>
-                    </div>
-                </div>
-            </div>
+            </ion-list>
         </div>
 
         <!--<ion-scroll direction="x" style="height:200px; min-height: 200px; overflow: scroll; white-space: nowrap;">
