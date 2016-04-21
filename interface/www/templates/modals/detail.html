@@ -1,0 +1,59 @@
+<ion-modal-view>
+    <ion-header-bar>
+        <div class="buttons">
+            <button class="button button-clear button-calm" ng-click="closeModalDetail()">Cancel</button>
+        </div>
+        <h1 class="title">Detail</h1>
+        <div class="buttons">
+            <button class="button button-clear button-calm" ng-click="closeModalDetail()">Edit</button>
+        </div>
+    </ion-header-bar>
+    <ion-content>
+
+        <div class="add-number" horizontal layout center center-justified>
+            <div horizontal layout>
+                <div class="icon-dolar energized-bg"><i class="ion ion-social-usd"></i></div>
+                <input type="text" placeholder="0" ng-model="220.00" class="text-center" style="border-bottom: 1px solid #ddd; font-size: 20px; font-weight: bold; width: 90px;"/>
+            </div>
+        </div>
+
+        <div class="list-report setting add-transaction-list">
+            <ul>
+                <li horizontal layout center>
+                    <div class="icon-report-calendar energized-bg">
+                        <i class="ion ion-bag light"></i>
+                    </div>
+                    <div flex class="b-b-gray">
+                        <div class="color-black-blue bold-md">Shopping</div>
+                    </div>
+                </li>
+                <li horizontal layout center>
+                    <div class="icon-report-calendar">
+                        <i class="ion ion-ios-calendar-outline"></i>
+                    </div>
+                    <div flex class="b-b-gray">
+                        <div class="color-black-blue bold-md">CitiBank Visa Card</div>
+                    </div>
+                </li>
+                <li horizontal layout center>
+                    <div class="icon-report-calendar">
+                        <i class="ion ion-ios-time-outline"></i>
+                    </div>
+                    <div flex class="b-b-gray">
+                        <div class="color-black-blue bold-md">Today at 08:00 PM</div>
+                    </div>
+                </li>
+                <li horizontal layout center class="padding">
+                    <div class="icon-report-calendar no-margin">
+
+                    </div>
+                    <textarea name="" id="" rows="3" placeholder="Note..." ng-model="'Best shoes ever!!!...'"></textarea>
+                </li>
+            </ul>
+        </div>
+
+        <div class="padding">
+            <img src="http://thatgia.com/uploads/2015/12/giay-converse-that-gia.jpg" alt="" class="img-responsive"/>
+        </div>
+    </ion-content>
+</ion-modal-view>

@@ -1,0 +1,82 @@
+<!--
+
+<ion-nav-bar class="bar-stable">
+    <ion-nav-back-button>
+    </ion-nav-back-button>
+</ion-nav-bar>
+<ion-tabs class="tabs-icon-top tabs-color-active-positive">
+
+    &lt;!&ndash; Dashboard Tab &ndash;&gt;
+    <ion-tab title="Status" icon-off="ion-ios-pulse" icon-on="ion-ios-pulse-strong" href="#/tab/dash">
+        <ion-nav-view name="tab-dash"></ion-nav-view>
+    </ion-tab>
+
+    &lt;!&ndash; Chats Tab &ndash;&gt;
+    <ion-tab title="Chats" icon-off="ion-ios-chatboxes-outline" icon-on="ion-ios-chatboxes" href="#/tab/chats">
+        <ion-nav-view name="tab-chats"></ion-nav-view>
+    </ion-tab>
+
+    &lt;!&ndash; Account Tab &ndash;&gt;
+    <ion-tab title="Account" icon-off="ion-ios-gear-outline" icon-on="ion-ios-gear" href="#/tab/account">
+        <ion-nav-view name="tab-account"></ion-nav-view>
+    </ion-tab>
+
+
+</ion-tabs>
+-->
+<ion-view>
+    <ion-header-bar class="bar-positive" ng-hide="data.positionTab == 3">
+        <h1 class="title">March, 2015 <i class="ion ion-ios-arrow-down"></i></h1>
+
+        <div class="buttons">
+            <button class="button button-clear"><i class="ion ion-ios-search"></i></button>
+        </div>
+    </ion-header-bar>
+    <ion-content class="bg-content" has-bouncing="true">
+        <ion-slide-box show-pager="false" on-slide-changed="slideHasChanged($index)">
+            <ion-slide>
+                <div ng-include="'./templates/tab-calendar.html'"></div>
+            </ion-slide>
+            <ion-slide>
+
+                <div ng-include="'./templates/tab-budget.html'"></div>
+            </ion-slide>
+            <ion-slide>
+                <div ng-include="'./templates/tab-chart.html'"></div>
+            </ion-slide>
+            <ion-slide>
+                <div ng-include="'./templates/tab-account.html'"></div>
+            </ion-slide>
+
+        </ion-slide-box>
+
+        <!--<ui-view name="tabContent"></ui-view>-->
+    </ion-content>
+    <ion-footer-bar class="bar-positive list-footer">
+        <ul>
+            <li ng-class="{active: data.positionTab == 0}" ng-click="goState(0)">
+                <div class="icon-tab" horizontal layout center center-justified><i
+                        class="ion ion-ios-calendar-outline"></i></div>
+                <div class="text-tab">Calendar</div>
+            </li>
+            <li ng-class="{active: data.positionTab == 1}" ng-click="goState(1)">
+                <div class="icon-tab" horizontal layout center center-justified><i class="ion ion-cash"></i></div>
+                <div class="text-tab">Budgets</div>
+            </li>
+            <li>
+                <div class="plus-transaction" horizontal layout center center-justified
+                     ng-click="openModalTransaction()">
+                    <i class="ion ion-plus-round"></i>
+                </div>
+            </li>
+            <li ng-class="{active: data.positionTab == 2}" ng-click="goState(2)">
+                <div class="icon-tab" horizontal layout center center-justified><i class="ion ion-stats-bars"></i></div>
+                <div class="text-tab">Charts</div>
+            </li>
+            <li ng-class="{active: data.positionTab == 3}" ng-click="goState(3)">
+                <div class="icon-tab" horizontal layout center center-justified><i class="ion ion-person"></i></div>
+                <div class="text-tab">Account</div>
+            </li>
+        </ul>
+    </ion-footer-bar>
+</ion-view>

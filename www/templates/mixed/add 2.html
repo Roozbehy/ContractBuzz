@@ -1,0 +1,118 @@
+<ion-view hide-nav-bar="true" class="add-peoples body-bg">
+  <ion-header-bar class="bar bar-header bar-positive">
+    <h1 class="title">Add New Contract</h1>
+  </ion-header-bar>
+  <ion-content class="has-header padding full-height">
+    <div class="row">
+      <div class="col">
+        <div class="list">
+          <label class="item item-input item-stacked-label"> <span class="input-label">Company</span>
+            <input type="text">
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="list">
+          <label class="item item-input item-stacked-label"> <span class="input-label">Expire Date</span>
+            <input type="text">
+          </label>
+        </div>
+      </div>
+      <div class="col">
+        <div class="list">
+          <label class="item item-input item-stacked-label"> <span class="input-label">Remind Date</span>
+            <input type="text">
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="list">
+          <label class="item item-input item-stacked-label"> <span class="input-label">Remind Time</span>
+            <input type="text">
+          </label>
+        </div>
+      </div>
+      <div class="col">
+        <div class="list">
+          <label class="item item-input item-stacked-label"> <span class="input-label">Reference</span>
+            <input type="text">
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="list">
+          <label class="item item-input item-stacked-label"> <span class="input-label">Number</span>
+            <input type="text">
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="list">
+          <label class="item item-input item-stacked-label"> <span class="input-label">Email</span>
+            <input type="email">
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="list">
+          <label class="item item-input item-stacked-label"> <span class="input-label">Assign To</span>
+            <select>
+              <option>Blue</option>
+              <option selected>Green</option>
+              <option>Red</option>
+            </select>
+          </label>
+        </div>
+      </div>
+      <div class="col">
+        <div class="list">
+          <label class="item item-input item-stacked-label"> <span class="input-label">Category</span>
+            <select>
+              <option>Blue</option>
+              <option selected>Green</option>
+              <option>Red</option>
+            </select>
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <button class="button button-light">Cancel</button>
+      </div>
+      <div class="col">
+        <button class="button button-positive">Add Contract</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="image-c-main">
+          <button class="image-circle" ng-click="addMedia(cont.id)"><i><img src="img/gallery.png"></i></button>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="box"><img src="img/img1.png" ><a href="#" class="close-btn"><img src="img/close-btn.png" alt=""></a></div>
+        <div class="box"><img src="img/img2.png" ><a href="#" class="close-btn"><img src="img/close-btn.png" alt=""></a></div>
+       <!-- <div class="box"><img src="../img/img3.png" ><a href="#" class="close-btn"><img src="../img/close-btn.png" alt=""></a></div>
+        <div class="box"><img src="../img/img4.png" ><a href="#" class="close-btn"><img src="../img/close-btn.png" alt=""></a></div>-->
+      </div>
+    </div>
+    
+    <!--<ion-scroll direction="x" style="height:200px; min-height: 200px; overflow: scroll; white-space: nowrap;">
+     <img ng-repeat="image in images" ng-if="image.id==cont.id" style="width:50%; padding: 5px 5px 5px 5px;" ng-src="{{urlForImage(image.photo)}}">
+ </ion-scroll>--> 
+    
+  </ion-content>
+</ion-view>

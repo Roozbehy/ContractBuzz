@@ -1,0 +1,105 @@
+<ion-view hide-nav-bar="true">
+  <ion-header-bar class="bar bar-header bar-positive">
+    <h1 class="title">Add New Contract</h1>
+  </ion-header-bar>
+  <ion-content class="has-header padding full-height">
+
+            <ion-input class="item item-input">
+                <i class="icon ion-android-globe"></i>
+                <ion-label>&nbsp Company:</ion-label>
+                <input type="text" style="text-align: right" ng-model="cont.company">
+            </ion-input>
+
+            <!--<ion-input class="item item-input">
+                <i class="icon ion-ios-calendar-outline"></i>
+                <ion-label ng-click="showDatePicker('date')">&nbsp Expiry Date:</ion-label>
+                <input type="text" style="text-align: right" placeholder="DD/MM/YYYY" ng-readonly="true" ng-model="cont.date">
+            </ion-input>-->
+
+            <label class="item item-input widget uib_w_9 d-margins" data-uib="ionic/input" data-ver="0" ng-click="showDatePicker('expiry')">
+                <i class="icon ion-ios-calendar-outline"></i>
+                <span class="input-label">&nbsp Expiry Date:</span>
+                <input type="text" style="text-align: right" placeholder="dd/mm/yyyy" ng-model="cont.stringExp" ng-readonly="true">
+            </label>
+
+            <label class="item item-input widget uib_w_9 d-margins" data-uib="ionic/input" data-ver="0" ng-click="showDatePicker('remind')">
+                <i class="icon ion-android-notifications"></i>
+                <span class="input-label">&nbsp Remind Date:</span>
+                <input type="text" style="text-align: right" placeholder="dd/mm/yyyy" ng-model="cont.stringRem" ng-readonly="true">
+            </label>
+
+            <label class="item item-input widget uib_w_10 d-margins" data-uib="ionic/input" data-ver="0" ng-click="showDatePicker('time')">
+                <i class="icon ion-ios-time-outline"></i>
+                <span class="input-label">&nbsp Remind Time:</span>
+                <input type="text" style="text-align: right" placeholder="HH:MM" ng-model="cont.stringTime" ng-readonly="true">
+            </label>
+
+            <!--  <ion-input class="item item-input">
+                <i class="icon ion-android-notifications"></i>
+                <ion-label ng-click="showDatePicker('date')">&nbsp Remind Me On:</ion-label>
+                <input type="text" style="text-align: right" ng-model="cont.remind" ng-readonly="true">
+            </ion-input> -->
+
+            <ion-input class="item item-input">
+                <i class="icon ion-compose"></i>
+                <ion-label>&nbsp Reference:</ion-label>
+                <input type="text" style="text-align: right" ng-model="cont.ref">
+            </ion-input>
+
+                <label class="item item-input">
+                  <i class="icon ion-ios-telephone"></i>
+        <span class="input-label">&nbsp Number:</span>
+        <input type="text" style="text-align: right" ng-model="cont.contact_number">
+      </label>
+
+
+            <ion-input class="item item-input">
+                <i class="icon ion-email"></i>
+                <ion-label>&nbsp Email:</ion-label>
+                <input type="text" style="text-align: right" ng-model="cont.email">
+            </ion-input>
+
+
+
+            <label class="item item-input item-select">
+                <i class="icon ion-person"></i>
+                <div class="input-label">
+                    &nbsp&nbspAssign To:
+                </div>
+                <select ng-model="cont.person" ng-options="o as o for o in people">
+                </select>
+            </label>
+
+            <label class="item item-input item-select">
+                <i class="icon ion-grid"></i>
+                <div class="input-label">
+                    &nbsp&nbspCategory:
+                </div>
+                <select ng-model="cont.type">
+                    <option>Phone</option>
+                    <option>Trial</option>
+                    <option>Voucher</option>
+                    <option>Gym</option>
+                    <option>Passport</option>
+                    <option>Other</option>
+                </select>
+            </label>
+
+
+        <div class="button-bar">
+            <a href="#/timeline" class="button icon ion-close-circled button-assertive">&nbspCancel</a>
+            <a class="button icon ion-images button-balanced" ng-click="addMedia(cont.id)">&nbspAdd Image</a>
+            <a class="button icon ion-ios-checkmark button-positive" ng-click="save()">&nbspSave</a>
+        </div>
+
+        <ion-scroll direction="x" style="height:200px; min-height: 200px; overflow: scroll; white-space: nowrap;">
+     <img ng-repeat="image in images" ng-if="image.id==cont.id" ng-src="{{urlForImage(image.photo)}}" style="width:50%; padding: 5px 5px 5px 5px;"/>
+   </ion-scroll>
+
+    </ion-content>
+</ion-view>
+
+<!--
+
+
+-->

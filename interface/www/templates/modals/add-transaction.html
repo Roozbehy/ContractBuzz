@@ -1,0 +1,68 @@
+<ion-modal-view>
+    <ion-header-bar>
+        <div class="buttons">
+            <button class="button button-clear button-calm" ng-click="closeModalTransaction()">Cancel</button>
+        </div>
+        <h1 class="title">Add transaction</h1>
+        <div class="buttons">
+            <button class="button button-clear button-calm" ng-click="closeModalTransaction()">Done</button>
+        </div>
+    </ion-header-bar>
+    <ion-content>
+        <div class="padding">
+            <div class="switch-report switch-report-transaction text-center" horizontal layout center>
+                <div flex class="tab-report color-black-blue active">
+                    Income
+                </div>
+                <div flex class="tab-report color-black-blue" style="border-left: 1px solid #95acbc; border-right: 1px solid #95acbc;">
+                    Expense
+                </div>
+                <div flex class="tab-report color-black-blue">
+                    Tranfer
+                </div>
+            </div>
+        </div>
+
+        <div class="add-number" horizontal layout center center-justified>
+            <div horizontal layout>
+                <div class="icon-dolar energized-bg"><i class="ion ion-social-usd"></i></div>
+                <input type="text" placeholder="0" class="text-center" style="border-bottom: 1px solid #ddd; font-size: 20px; font-weight: bold; width: 90px;"/>
+            </div>
+        </div>
+
+        <div class="list-report setting add-transaction-list">
+            <ul>
+                <li horizontal layout center>
+                    <div class="icon-report-calendar">
+                        <i class="ion ion-help-circled"></i>
+                    </div>
+                    <div flex class="b-b-gray">
+                        <div class="color-gray-blue">Select Category</div>
+                    </div>
+                </li>
+                <li horizontal layout center>
+                    <div class="icon-report-calendar">
+                        <i class="ion ion-ios-calendar-outline"></i>
+                    </div>
+                    <div flex class="b-b-gray">
+                        <div class="color-black-blue bold-md">Wallet</div>
+                    </div>
+                </li>
+                <li horizontal layout center>
+                    <div class="icon-report-calendar">
+                        <i class="ion ion-ios-time-outline"></i>
+                    </div>
+                    <div flex class="b-b-gray">
+                        <div class="color-black-blue bold-md">Today at 08:00 PM</div>
+                    </div>
+                </li>
+                <li horizontal layout center class="padding">
+                    <div class="icon-report-calendar no-margin">
+
+                    </div>
+                    <textarea name="" id="" rows="3" placeholder="Note..."></textarea>
+                </li>
+            </ul>
+        </div>
+    </ion-content>
+</ion-modal-view>

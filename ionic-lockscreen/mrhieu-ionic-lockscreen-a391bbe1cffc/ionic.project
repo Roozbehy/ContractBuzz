@@ -1,0 +1,14 @@
+{
+  "name": "lockscreen",
+  "app_id": "8591aed2",
+  "gulpStartupTasks": [
+    "sass",
+    "watch"
+  ],
+  "watchPatterns": [
+    "www/**/*",
+    "!www/lib/**/*",
+    "scss/*.scss",
+    "scss/*.sass"
+  ]
+}

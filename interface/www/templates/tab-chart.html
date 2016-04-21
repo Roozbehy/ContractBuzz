@@ -1,0 +1,55 @@
+<div class="total-calendar" horizontal layout center>
+    <div class="icon-report-calendar calm-bg icon-chart-report">
+        46.66%
+    </div>
+    <div flex>
+        <div horizontal layout center class="in-come padding-b-5">
+            <div flex class="name color-gray-blue">Income</div>
+            <div class="price energized">-$387.00</div>
+        </div>
+        <div horizontal layout center class="in-come padding-b-5">
+            <div flex class="name color-gray-blue">Expense</div>
+            <div class="price balanced">$470.00</div>
+        </div>
+        <div horizontal layout center class="total-plus padding-b-5 bold">
+            <div flex class="name color-black-blue">Total</div>
+            <div class="price balanced">$83.00</div>
+        </div>
+    </div>
+
+</div>
+
+<div class="report-chart">
+    <div class="padding">
+        <div class="switch-report text-center" horizontal layout center>
+            <div flex class="tab-report color-black-blue" ng-click="switchTabReport()" ng-class="{active: !switchReport}">
+                Expense
+            </div>
+            <div flex class="tab-report color-black-blue" ng-click="switchTabReport()" ng-class="{active: switchReport}">
+                Income
+            </div>
+        </div>
+    </div>
+
+    <canvas id="doughnut" class="chart chart-doughnut"
+            chart-data="data.dataChart" chart-labels="data.labelsChart">
+    </canvas>
+
+    <div class="table-report">
+        <table style="width:100%">
+            <tr class="header-table-report color-gray-blue">
+                <td>Category</td>
+                <td class="text-right">Percent</td>
+                <td class="text-right">Amount</td>
+            </tr>
+            <tr ng-repeat="item in reports" ng-click="openModalDetail()">
+                <td class="category-chart-report color-black-blue">
+                    <span class="{{item.iconBg}}"><i class="{{item.icon}}"></i></span> {{item.name}}
+                </td>
+                <td class="text-right color-wallet">{{item.percent}}%</td>
+                <td class="text-right energized">{{item.amount | currency}}</td>
+            </tr>
+        </table>
+    </div>
+
+</div>

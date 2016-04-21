@@ -1,0 +1,83 @@
+<ion-view>
+    <!--  <link href="//code.ionicframework.com/nightly/css/ionic.css" rel="stylesheet">
+    <ion-content overflow-scroll="true" padding="false" ng-controller="peopleCtrl">
+        <ion-list show-delete="shouldShowDelete" show-reorder="shouldShowReorder" can-swipe="listCanSwipe">
+            <ion-item class="item item-remove-animate" ng-repeat="person in people" ng-click="togglePerson(person)" ng-class="{active: isPersonShown(person)}">
+                <i class="icon ion-person"></i> {{person}}
+
+                <ion-option-button class="icon ion-trash-b button-assertive" ng-click="remove(person)">
+                    &nbspDelete
+                </ion-option-button>
+
+                <ion-list ng-show="isPersonShown(person)" ng-repeat="cont in conts">
+                    <ion-item <br><span>{{cont.type}} ({{cont.company}})</span>
+                    </ion-item>
+                </ion-list>
+            </ion-item>
+
+        </ion-list>
+
+        <button class="button button-block button-calm icon ion-person" ng-click="showPopup()">
+            Add New Person
+        </button>-->
+
+
+    <link href="//code.ionicframework.com/nightly/css/ionic.css" rel="stylesheet">
+    <ion-content overflow-scroll="true" padding="false" class="has-header" ng-controller="peopleCtrl">
+        <ion-list>
+            <div ng-repeat="person in people">
+                <ion-item class="item-remove-animate" ng-click="togglePerson(person)" ng-class="{active: isPersonShown(person)}" letters-of="{{person}}">
+
+                    <i>{{person}}</i>
+                    <ion-option-button class="button-assertive icon ion-trash-b" ng-click="remove(person)">&nbspDelete</ion-option-button>
+                </ion-item>
+        </ion-list>
+
+        <ion-list class="item-text-wrap" ng-repeat="cont in personConts" ng-show="isPersonShown(person)">
+
+            <ion-item class="item item-thumbnail-left">
+                <img src="img/{{cont.type}}.png">
+                <h2>{{cont.type}} ({{cont.company}})</h2>
+                <p>Expires
+                    <span ng-show="{{daysLeft(cont.ExpDate)}}===0">Today</span>
+                    <span ng-show="{{daysLeft(cont.ExpDate)}}===1">in 1 day</span>
+                    <span ng-show="{{daysLeft(cont.ExpDate)}}>1"> in <td>{{daysLeft(cont.ExpDate)}}</td> days</span> - {{cont.stringExp}}</p>
+
+            </ion-item>
+
+        </ion-list>
+
+        </ion-item>
+        </div>
+
+        <button class="button button-block button-calm icon ion-person" ng-click="showPopup()">
+            Add New Person
+        </button>
+    </ion-content>
+
+</ion-view>
+
+<!--
+
+        <ion-list>
+            <ion-item class="item-thumbnail-left card" ng-repeat="cont in conts" ng-click="toggleCont(cont)" ng-class="{active: isContShown(cont)}">
+            <img src="img/{{cont.type}}.png">
+            <br>
+                <h2>{{cont.type}} ({{cont.company}})</h2>
+                <p>Expires in 16 days</p>
+            </ion-item>
+
+            <ion-item ng-repeat="item in cont" ng-show="isContShown(cont)">
+                    {{item}}
+                </ion-item>
+
+            <ion-item class="item-divider">Expired</ion-item>
+            <ion-item class="item-thumbnail-left" href="#/page9">
+                <img src="img/gym.png">
+                <h2>Gym (LA Fitness)</h2>
+                <p>Expired 12 days ago</p>
+            </ion-item>
+        </ion-list>
+        -->
+</ion-content>
+</ion-view>

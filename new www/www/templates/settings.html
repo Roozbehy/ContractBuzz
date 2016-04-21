@@ -1,0 +1,27 @@
+<ion-view title="Settings" class="body-bg setting-view">
+  <ion-content overflow-scroll="true" padding="false" class="has-header">
+    <!--
+        <form class="list">
+            <ion-item class="item-divider">Reminder Settings</ion-item>
+            <label class="item item-input" name="numdays">
+                <span class="input-label">Days before expiration:</span>
+                <input type="number" placeholder="3">
+            </label>
+            <ion-toggle toggle-class="toggle-balanced" ng-checked="true" name="pro">Upgrade to pro</ion-toggle>
+        </form>
+-->
+    
+    <div class="setting-list">
+      <h3>Reminder Settings</h3>
+      <label class="item item-input" name="numdays"> <span class="input-label">Days before expiration:</span>
+        <input type="number" placeholder="3">
+      </label>
+      <ion-toggle toggle-class="toggle-balanced" ng-checked="true" name="pro">Upgrade to pro</ion-toggle>
+    </div>
+    <div class="row refreshbtn">
+      <div class="col restorebtn">
+        <button class="button icon button-block button-balanced refresh-btn" ng-click="restoreConts()"> <img src="../img/refresh-icon.png" alt="">Restore Deleted Contracts</button>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

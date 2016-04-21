@@ -1,0 +1,106 @@
+<ion-view title="Timeline" class="timeline body-bg">
+
+    <ion-content overflow-scroll="true" padding="false" class="has-header" ng-controller="ListCtrl">
+
+        <ion-list>
+            <div class="timeline-add">
+                <h2>UPCOMING</h2>
+                <div class="time-bg" ng-repeat="cont in conts">
+                    <div class="time-header">
+                		<span>
+                        	<i class="alfa">
+                                <img src="img/mobile.png">
+                             </i>
+                        </span>
+                        <div class="timeline-title">
+                            <h4>{{cont.type}} ({{cont.company}})</h4>
+                            <b>Expires in {{cont.ExpDate | amDifference : null : 'days' }} days - {{cont.stringExp}}</b>
+                            <div class="down-arrow"><img src="img/down-arrow.png"></div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <div class="list">
+                                <label class="item item-input item-stacked-label"> <span class="input-label">Contact Number</span>
+                                    <input type="text" placeholder="{{cont.contact_number}}" ng-readonly="true">
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="list">
+                                <label class="item item-input item-stacked-label"> <span
+                                        class="input-label">Reference</span>
+                                    <input type="text" placeholder="{{cont.ref}}" ng-readonly="true">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <div class="list">
+                                <label class="item item-input item-stacked-label"> <span
+                                        class="input-label">Email</span>
+                                    <input type="text" placeholder="{{cont.email}}" ng-disabled="true">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <div class="list">
+                                <label class="item item-input item-stacked-label"> <span
+                                        class="input-label">Assigned To</span>
+                                    <button class="button button-block button-assertive" ng-disabled="true">{{cont.person}}</button>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <div class="button-center">
+                                <a href="#/open/{{cont.id}}"><button class="button button-positive">Edit</button></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-add">
+                <h2>EXPIRED</h2>
+                <div class="time-bgs">
+                    <div class="time-header">
+                		<span>
+                        	<i class="alfa">
+                                <img src="img/tag.png">
+                             </i>
+                        </span>
+                        <div class="timeline-title">
+                            <h4>Trial (Company Name)</h4>
+                            <b>Expire in 428 days - June 4, 2017</b>
+                            <div class="down-arrow"><img src="img/down-arrow.png"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="time-bgs">
+                    <div class="time-header">
+                		<span>
+                        	<i class="alfa">
+                                <img src="img/tag.png">
+                             </i>
+                        </span>
+                        <div class="timeline-title">
+                            <h4>Trial (Company Name)</h4>
+                            <b>Expire in 428 days - June 4, 2017</b>
+                            <div class="down-arrow"><img src="img/down-arrow.png"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ion-list>
+    </ion-content>
+</ion-view>
